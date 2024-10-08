@@ -1,12 +1,8 @@
 name: image build
 on:
-  workflow_run:
-    workflows:
-      - Run Tests
+  push:
     branches:
-      - main
-    types:
-      - completed
+      - ${{ github.event.repository.default_branch }}
 
 env:
   REGISTRY: ghcr.io
