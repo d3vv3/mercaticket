@@ -16,10 +16,10 @@ export default function Home() {
       // TODO: Allow user to input daily_kcal
       const statistics = await fetch(`https://mercaapi.sgn.space/api/ticket/stats`,
         {
-            mode: "no-cors",
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'application/json',
             },
             body: JSON.stringify({...ticketData})
         },
@@ -39,7 +39,7 @@ export default function Home() {
     const response = await fetch("https://mercaapi.sgn.space/api/ticket/", {
       method: "POST",
       headers: {
-        'accept': 'application/json',
+        'Accept': 'application/json',
       },
       body: formData,
     });
