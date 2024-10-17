@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import React from "react";
-import { TicketList, TicketForm } from "./components";
+import { TicketList, TicketForm, TicketStats } from "./components";
 
 export default function Home() {
   const [ticketStatistics, setTicketStatistics] = useState({});
@@ -13,16 +13,25 @@ export default function Home() {
   }
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-4 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col row-start-2 items-center sm:items-start md:gap-8">
+    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen p-4 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <header className="row-start-1">
         <h1 className="text-4xl font-bold mb-8">MercaTicket</h1>
+      </header>
+      <main className="row-start-2 w-full">
         {(ticketStatistics?.items || []).length === 0 ? (
           <TicketForm onTicketProcessed={setTicketStatistics} />
         ) : (
-          <TicketList ticketStatistics={ticketStatistics} switchUseForStats={switchUseForStats} />
+          <div className="flex flex-row md:flex-row gap-8 justify-center">
+            <div>
+              <TicketList ticketStatistics={ticketStatistics} switchUseForStats={switchUseForStats} />
+            </div>
+            <div>
+              <TicketStats ticketStatistics={ticketStatistics} />
+            </div>
+          </div>
         )}
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center mt-8">
         Juanito Rojete te queremos
       </footer>
     </div>
