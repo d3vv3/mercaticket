@@ -14,14 +14,16 @@ export default function Home() {
 
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen p-4 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <header className="row-start-1">
-        <h1 className="text-4xl font-bold mb-8">MercaTicket</h1>
+      <header className="row-start-1 text-center">
+        <h1 className="sm:text-6xl text-4xl font-bold mb-8">MercaTicket</h1>
       </header>
-      <main className="row-start-2 w-full">
+      <main className="row-start-2 w-full flex flex-col justify-center">
         {(ticketStatistics?.items || []).length === 0 ? (
-          <TicketForm onTicketProcessed={setTicketStatistics} />
+            <div className="flex flex-row flex-wrap gap-8 justify-center">
+              <TicketForm onTicketProcessed={setTicketStatistics} />
+            </div>
         ) : (
-          <div className="flex flex-row md:flex-row gap-8 justify-center">
+          <div className="flex flex-row flex-wrap gap-8 justify-center">
             <div>
               <TicketList ticketStatistics={ticketStatistics} switchUseForStats={switchUseForStats} />
             </div>
