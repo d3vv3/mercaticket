@@ -6,31 +6,8 @@ import React from "react";
 export default function Home() {
 
   const [ticketFile, setTicketFile] = useState(new File([], "empty"));
-  const [ticketData, setTicketData] = useState({});
   const [processingTicket, setProcessingTicket] = useState(false);
   const [ticketStatistics, setTicketStatistics] = useState({});
-
-  useEffect(() => {
-    const fetchTicketStats = async () => {
-      if (!ticketData.items) return;
-      // TODO: Allow user to input daily_kcal
-      const statistics = await fetch(`https://mercaapi.sgn.space/api/ticket/stats`,
-        {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify({...ticketData})
-        },
-      );
-      const statisticsData = await statistics.json();
-      // FIXME: Drop data mocking
-      setTicketStatistics(statisticsData);
-    };
-    fetchTicketStats();
-    setProcessingTicket(false);
-  }, [ticketData]);
 
   const processTicket = async () => {
     setProcessingTicket(true);
@@ -44,8 +21,9 @@ export default function Home() {
       body: formData,
     });
     const data = await response.json();
-    setTicketData(data);
+    setTicketStatistics(data);
     setTicketFile(new File([], "empty"));
+    setProcessingTicket(false);
   };
 
   const switchUseForStats = (index) => {
@@ -108,28 +86,28 @@ export default function Home() {
                     <div className="flex font-semibold justify-center col-span-1">Uds.</div>
                     <div className="flex font-semibold justify-center col-span-2">Precio ud.</div>
                     <div className="flex font-semibold justify-center col-span-1">Total</div>
-                    {(ticketStatistics?.items).map((product, index) => (
+                    {(ticketStatistics?.items).map((item, index) => (
                       <React.Fragment key={index}>
-                        <div className={`flex items-center justify-center col-span-1 ${product?.is_food ? "" : "grayscale" }`} onClick={() => switchUseForStats(index)}>
+                        <div className={`flex items-center justify-center col-span-1 ${item.product?.is_food ? "" : "grayscale" }`} onClick={() => switchUseForStats(index)}>
                           <Image
-                            src="https://prod-mercadona.imgix.net/images/a5b8c9725f30deaad19daa2653534c88.jpg?fit=crop&h=300&w=300"
+                            src={`${item.product?.images.sort((a, b) => a.perspective - b.perspective)[0]?.thumbnail_url}`}
                             sizes="100vw"
-                            alt={product.name}
+                            alt={item.product?.name}
                             width={0}
                             height={0}
                             style={{ width: '100%', height: 'auto' }}
                             className="object-contain"
                           />
                         </div>
-                        <div className={`flex items-center col-span-4 rounded-l-lg pl-2 border-l-2 border-y-2 ${product?.is_food ? "bg-green-50 border-green-700" : "line-through bg-gray-100"}`} onClick={() => switchUseForStats(index)}>{product.name}</div>
-                        <div className={`flex items-center justify-center col-span-1 border-y-2 ${product?.is_food ? "bg-green-50 border-green-700" : "line-through bg-gray-100" }`} onClick={() => switchUseForStats(index)}>{product.quantity}</div>
-                        <div className={`flex items-center justify-center col-span-2 border-y-2 ${product?.is_food ? "bg-green-50 border-green-700" : "line-through bg-gray-100" }`} onClick={() => switchUseForStats(index)}>{product.unit_price}</div>
-                        <div className={`flex items-center justify-center col-span-1 rounded-r-lg border-r-2 border-y-2 ${product?.is_food ? "bg-green-50 border-green-700" : "line-through bg-gray-100" }`} onClick={() => switchUseForStats(index)}>{Number(product.price).toFixed(2)}</div>
+                        <div className={`flex items-center col-span-4 rounded-l-lg pl-2 border-l-2 border-y-2 ${item.product?.is_food ? "bg-green-50 border-green-700" : "line-through bg-gray-100"}`} onClick={() => switchUseForStats(index)}>{item.product?.name}</div>
+                        <div className={`flex items-center justify-center col-span-1 border-y-2 ${item.product?.is_food ? "bg-green-50 border-green-700" : "line-through bg-gray-100" }`} onClick={() => switchUseForStats(index)}>{item.quantity}</div>
+                        <div className={`flex items-center justify-center col-span-2 border-y-2 ${item.product?.is_food ? "bg-green-50 border-green-700" : "line-through bg-gray-100" }`} onClick={() => switchUseForStats(index)}>{Number(item.unit_price).toFixed(2)}</div>
+                        <div className={`flex items-center justify-center col-span-1 rounded-r-lg border-r-2 border-y-2 ${item.product?.is_food ? "bg-green-50 border-green-700" : "line-through bg-gray-100" }`} onClick={() => switchUseForStats(index)}>{Number(item.total_price).toFixed(2)}</div>
                       </React.Fragment>
                     ))}
                     <div className="flex items-center col-start-9 font-bold col-span-1">
                       {ticketStatistics.items
-                        .reduce((total, item) => item.is_food ? total + Number(item.price) : total, 0)
+                        .reduce((total, item) => item.product?.is_food ? total + Number(item.price) : total, 0)
                         .toFixed(2)}€
                     </div>
                   </div>
