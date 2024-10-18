@@ -18,7 +18,7 @@ const TicketList = ({ ticketStatistics, switchUseForStats }) => {
     
     </div>
     <div className="grid grid-cols-9 gap-y-1 sm:max-w-3xl w-full text-sm md:tx-base px-2 md:px-4">
-      <div className="flex items-center col-start-9 font-bold col-span-1">
+      <div className="flex justify-center col-start-9 font-bold col-span-1">
         {ticketStatistics.items
           .reduce((total, item) => item.product?.is_food ? total + Number(item.total_price) : total, 0)
           .toFixed(2)}€
