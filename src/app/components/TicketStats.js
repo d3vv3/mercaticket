@@ -58,7 +58,7 @@ const TicketStats = ({ ticketStatistics, dailyKcal = 2000 }) => {
         <table className="w-full border-collapse">
           <tbody>
             <tr className="border-b"><td className="py-2 font-bold">Calorías totales:</td><td className="py-2 text-right">{totalStats.totalCalories?.toFixed(2)} kcal</td></tr>
-            <tr className="border-b"><td className="py-2 font-bold">Duración en días:</td><td className="py-2 text-right">{Math.round(totalStats.totalCalories/dailyKcal)} días</td></tr>
+            <tr className="border-b"><td className="py-2 font-bold">Dosis diarias de comida:</td><td className="py-2 text-right">{Math.round(totalStats.totalCalories/dailyKcal)} días</td></tr>
             <tr className="border-b"><td className="py-2 font-bold">Proteinas totales:</td><td className="py-2 text-right">{totalStats.totalProteins?.toFixed(2)} g</td></tr>
             <tr className="border-b"><td className="py-2 font-bold">Hidratos de carbono totales:</td><td className="py-2 text-right">{totalStats.totalCarbs?.toFixed(2)} g</td></tr>
             <tr className="border-b"><td className="py-2 font-bold">Grasas totales:</td><td className="py-2 text-right">{totalStats.totalFat?.toFixed(2)} g</td></tr>
