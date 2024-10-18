@@ -53,7 +53,7 @@ const TicketStats = ({ ticketStatistics }) => {
 
   return (
     <div className="bg-white shadow-xl border-2 border-gray-200 rounded-2xl p-6 w-full max-w-xl">
-      <h2 className="text-2xl font-bold mb-4">Ticket Statistics</h2>
+      <h2 className="text-2xl font-bold mb-4">Estadísticas del ticket</h2>
       {Object.keys(totalStats).length > 0 && (
         <table className="w-full border-collapse">
           <tbody>
