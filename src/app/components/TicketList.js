@@ -11,7 +11,7 @@ const TicketList = ({ ticketStatistics, switchUseForStats }) => {
       <div className="flex font-semibold justify-center col-span-2 sm:text-xl">Precio ud.</div>
       <div className="flex font-semibold justify-center col-span-1 sm:text-xl">Total</div>
     </div>
-    <div className="grid grid-cols-9 gap-y-1 sm:max-w-3xl w-full text-sm md:tx-base px-2 md:px-4 max-h-svh overflow-scroll snap-mandatory snap-y h-4/6">
+    <div className="grid grid-cols-9 sm:max-w-3xl w-full text-sm md:tx-base px-2 md:px-4 max-h-svh overflow-scroll snap-mandatory snap-y h-4/6">
       {(ticketStatistics?.items || []).map((item, index) => (
         <TicketItem key={index} item={item} index={index} switchUseForStats={switchUseForStats} />
       ))}
