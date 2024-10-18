@@ -4,7 +4,7 @@ import Image from "next/image";
 const TicketItem = ({ item, index, switchUseForStats }) => {
   return (
     <React.Fragment>
-      <div className={`flex items-center justify-center col-span-1 ${item.product?.is_food ? "" : "grayscale" }`} onClick={() => switchUseForStats(index)}>
+      <div className={`flex snap-start items-center justify-center col-span-1 ${item.product?.is_food ? "" : "grayscale" }`} onClick={() => switchUseForStats(index)}>
         <Image
           src={`${item.product?.images.sort((a, b) => a.perspective - b.perspective)[0]?.thumbnail_url}`}
           sizes="100vw"

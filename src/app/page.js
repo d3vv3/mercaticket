@@ -17,7 +17,7 @@ export default function Home() {
       <header className="row-start-1 text-center">
         <h1 className="sm:text-6xl text-4xl font-bold mb-8">MercaTicket</h1>
       </header>
-      <main className="row-start-2 w-full flex flex-col justify-center">
+      <main className="row-start-2 w-full flex flex-col justify-center h-full pb-16">
         {(ticketStatistics?.items || []).length === 0 ? (
             <div className="flex flex-row flex-wrap gap-8 justify-center">
               <TicketForm onTicketProcessed={setTicketStatistics} />
