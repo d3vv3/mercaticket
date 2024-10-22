@@ -1,10 +1,11 @@
 "use client";
 import { useState } from "react";
 import React from "react";
-import { TicketList, TicketForm, TicketStats } from "./components";
+import { TicketList, TicketForm, TicketStats, ReportModal } from "./components";
 
 export default function Home() {
   const [ticketStatistics, setTicketStatistics] = useState({});
+  const [itemToReport, setItemToReport] = useState({});
 
   const switchUseForStats = (index) => {
     const newProducts = [...ticketStatistics.items];
@@ -14,6 +15,7 @@ export default function Home() {
 
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen p-4 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)] dark:bg-slate-900">
+      <ReportModal isOpen={Object.keys(itemToReport).length !== 0} onClose={() => setItemToReport({})} item={itemToReport} />
       <header className="row-start-1 text-center">
         <h1 className="sm:text-6xl text-4xl font-bold mb-8">MercaTicket</h1>
       </header>
@@ -25,7 +27,7 @@ export default function Home() {
         ) : (
           <div className="flex flex-row flex-wrap gap-8 justify-center">
             <div>
-              <TicketList ticketStatistics={ticketStatistics} switchUseForStats={switchUseForStats} />
+              <TicketList ticketStatistics={ticketStatistics} switchUseForStats={switchUseForStats} reportItemModal={setItemToReport} />
             </div>
             <div>
               <TicketStats ticketStatistics={ticketStatistics} />

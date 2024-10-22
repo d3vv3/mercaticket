@@ -46,7 +46,7 @@ const TicketForm = ({ onTicketProcessed }) => {
         </label>
         <button type="submit" className="block text-sm text-white
           bg-green-600 hover:bg-green-700 drop-shadow-xl hover:drop-shadow-lg
-          py-2 px-4 rounded-full font-semibold"
+          py-2 px-4 z-0 rounded-full font-semibold"
         >
           Enviar
         </button>
