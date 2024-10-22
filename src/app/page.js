@@ -11,12 +11,19 @@ export default function Home() {
     const newProducts = [...ticketStatistics.items];
     newProducts[index].product.is_food = !newProducts[index].product?.is_food;
     setTicketStatistics({ ...ticketStatistics, items: newProducts });
-    umami.track('switch_use_for_stats', { product_id: newProducts[index].product.id, is_food: newProducts[index].product.is_food });
+    try {
+      umami.track('switch_use_for_stats', { product_id: newProducts[index].product.id, is_food: newProducts[index].product.is_food });
+    } catch (e) {
+        console.log("Umami is disabled");
+    }
   }
 
   useEffect(() => {
-    if (Object.keys(itemToReport).length !== 0) {
+    if (Object.keys(itemToReport).length === 0) return;
+    try {
       umami.track("open_report_modal", { product_id: itemToReport?.product?.id });
+    } catch (e) {
+      console.log("Umami is disabled");
     }
   }, [itemToReport]);
 
