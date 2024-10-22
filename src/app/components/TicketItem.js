@@ -19,8 +19,9 @@ const TicketItem = ({ item, index, switchUseForStats, setItemToReport, dailyKcal
       <div className={`flex items-center justify-center col-span-1 border-y-2 ${item.product?.is_food ? "bg-green-50 dark:bg-green-900/50 border-green-700" : "line-through dark:bg-gray-700 bg-gray-100 mb-2"}`} onClick={() => switchUseForStats(index)}>{item.quantity}</div>
       <div className={`flex items-center justify-center col-span-2 border-y-2 ${item.product?.is_food ? "bg-green-50 dark:bg-green-900/50 border-green-700" : "line-through dark:bg-gray-700 bg-gray-100 mb-2"}`} onClick={() => switchUseForStats(index)}>{Number(item.unit_price).toFixed(2)}</div>
       <div className={`flex items-center justify-center col-span-1 rounded-r-lg border-r-2 border-y-2 ${item.product?.is_food ? "bg-green-50 dark:bg-green-900/50 border-green-700" : "line-through dark:bg-gray-700 bg-gray-100 mb-2" }`} onClick={() => switchUseForStats(index)}>{Number(item.total_price).toFixed(2)}</div>
-      <div className={`flex snap-start items-start justify-center col-span-1 hover:cursor-pointer mr-1 ${item.product?.is_food ? "" : "grayscale" }`} onClick={() => setItemToReport(item)}>⁉️ </div>
       { item.product?.is_food && (
+        <React.Fragment>
+        <div className={`flex snap-start items-start justify-center col-span-1 hover:cursor-pointer mr-1 ${item.product?.is_food ? "" : "grayscale" }`} onClick={() => setItemToReport(item)}>⁉️ </div>
         <div className="flex items-center justify-center col-start-2 col-span-8 border-2 border-x-2 rounded-lg border-amber-200 mb-2">
           <div className="flex flex-row text-xs sm:text-sm flex-wrap gap-x-4 p-2 sm:p-2">
             <div className="flex items-center justify-center col-span-2"><span className="font-bold">Coste/{dailyKcal} kcal diarias: </span> {item.stats?.cost_per_daily_kcal?.toFixed(2) ?? "N/A"} €</div>
@@ -29,6 +30,7 @@ const TicketItem = ({ item, index, switchUseForStats, setItemToReport, dailyKcal
             <div className="flex items-center justify-center col-span-2"><span className="font-bold">Grasas: </span> {item.product?.nutritional_information?.total_fat?.toFixed(2) ?? "N/A"}%</div>
           </div>
         </div>
+        </React.Fragment>
       )
       }
     </React.Fragment>
