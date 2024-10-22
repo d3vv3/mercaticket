@@ -53,10 +53,10 @@ const ReportModal = ({ isOpen, onClose, item }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10" onClick={handleOverlayClick}>
-      <div className="bg-white rounded-lg p-8 max-w-md w-full">
+      <div className="bg-white rounded-lg p-8 max-w-md w-full dark:bg-slate-800">
         <h2 className="text-2xl font-bold mb-4">Reportar un problema</h2>
-        <p className="text-gray-600">Producto en ticket: {item?.original_name}</p>
-        <p className="text-gray-600 mb-4">Producto en MercaTicket: {item?.product?.name}</p>
+        <p className="text-gray-600 dark:text-gray-200">Producto en ticket: {item?.original_name}</p>
+        <p className="text-gray-600 mb-4 dark:text-gray-200">Producto en MercaTicket: {item?.product?.name}</p>
           <div className="flex justify-end gap-x-8">
             <button
               type="button"
