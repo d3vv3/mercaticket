@@ -20,6 +20,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <script defer src="https://analytics.sgn.space/script.js" data-website-id="9854cb81-7a17-4417-be8e-94c21b0ad91f"></script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
