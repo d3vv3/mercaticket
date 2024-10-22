@@ -52,7 +52,7 @@ const TicketStats = ({ ticketStatistics, dailyKcal = 2000 }) => {
   }, [ticketStatistics]);
 
   return (
-    <div className="bg-white shadow-xl border-2 border-gray-200 rounded-2xl p-6 w-full max-w-xl">
+    <div className="bg-white shadow-xl border-2 border-gray-200 rounded-2xl p-6 w-full max-w-xl dark:bg-slate-800">
       <h2 className="text-2xl font-bold mb-4">Estadísticas del ticket</h2>
       {Object.keys(totalStats).length > 0 && (
         <table className="w-full border-collapse">

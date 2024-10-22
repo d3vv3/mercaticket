@@ -13,7 +13,7 @@ export default function Home() {
   }
 
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen p-4 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen p-4 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)] dark:bg-slate-900">
       <header className="row-start-1 text-center">
         <h1 className="sm:text-6xl text-4xl font-bold mb-8">MercaTicket</h1>
       </header>
