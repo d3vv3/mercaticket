@@ -4,5 +4,6 @@ import TicketList from "./TicketList";
 import TicketForm from "./TicketForm";
 import TicketStats from "./TicketStats";
 import ReportModal from "./ReportModal";
+import Welcome from "./Welcome";
 
-export { TicketItem, TicketLoading, TicketList, TicketForm, TicketStats, ReportModal };
+export { TicketItem, TicketLoading, TicketList, TicketForm, TicketStats, ReportModal, Welcome };
