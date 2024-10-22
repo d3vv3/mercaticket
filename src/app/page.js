@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import { TicketList, TicketForm, TicketStats, ReportModal, Welcome } from "./components";
 
@@ -11,7 +11,14 @@ export default function Home() {
     const newProducts = [...ticketStatistics.items];
     newProducts[index].product.is_food = !newProducts[index].product?.is_food;
     setTicketStatistics({ ...ticketStatistics, items: newProducts });
+    umami.track('switch_use_for_stats', { product_id: newProducts[index].product.id, is_food: newProducts[index].product.is_food });
   }
+
+  useEffect(() => {
+    if (Object.keys(itemToReport).length !== 0) {
+      umami.track("open_report_modal", { product_id: itemToReport?.product?.id });
+    }
+  }, [itemToReport]);
 
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen p-4 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)] dark:bg-slate-900">

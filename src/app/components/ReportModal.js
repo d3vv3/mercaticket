@@ -62,6 +62,8 @@ const ReportModal = ({ isOpen, onClose, item }) => {
               type="button"
               onClick={handleReportNutritionalInfo}
               className="px-4 py-2 bg-green-700 text-white rounded-xl hover:bg-green-600"
+              data-umami-event="report_nutritional_info"
+              data-umami-event-product-id={item?.product?.id}
             >
               Información nutricional errónea
             </button>
@@ -69,6 +71,8 @@ const ReportModal = ({ isOpen, onClose, item }) => {
               type="button"
               onClick={handleReportWrongMatch}
               className="px-4 py-2 bg-green-700 text-white rounded-xl hover:bg-green-600"
+              data-umami-event="report_wrong_match"
+              data-umami-event-product-id={item?.product?.id}
             >
               Producto erróneo
             </button>
