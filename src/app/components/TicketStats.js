@@ -62,14 +62,14 @@ const TicketStats = ({ ticketStatistics, dailyKcal = 2000 }) => {
             <tr className="border-b"><td className="py-2 font-bold">Dosis diarias de comida:</td><td className="py-2 text-right">{Math.round(totalStats.totalCalories/dailyKcal)} días</td></tr>
             <tr className="border-b"><td className="py-2 font-bold">Coste por 2000 kcal diarias:</td><td className="py-2 text-right">{totalStats.costPerDailyKcal?.toFixed(2)} €</td></tr>
             <tr className="border-b-8"><td className="py-2 font-bold">Calorías por euro:</td><td className="py-2 text-right">{totalStats.kcalPerEuro?.toFixed(2)} kcal</td></tr>
+            <tr className="border-b"><td className="py-2 font-bold">Porcentaje proteina:</td><td className="py-2 text-right">{totalStats.proteinPercentage?.toFixed(2)}%</td></tr>
+            <tr className="border-b"><td className="py-2 font-bold">Porcentaje grasa:</td><td className="py-2 text-right">{totalStats.fatPercentage?.toFixed(2)}%</td></tr>
+            <tr className="border-b"><td className="py-2 font-bold">Porcentaje hidratos de carbono:</td><td className="py-2 text-right">{totalStats.carbsPercentage?.toFixed(2)}%</td></tr>
+            <tr className="border-b-4"><td className="py-2 font-bold">Porcentaje fibra:</td><td className="py-2 text-right">{totalStats.fiberPercentage?.toFixed(2)}%</td></tr>
             <tr className="border-b"><td className="py-2 font-bold">Proteinas totales:</td><td className="py-2 text-right">{totalStats.totalProteins?.toFixed(2)} g</td></tr>
             <tr className="border-b"><td className="py-2 font-bold">Hidratos de carbono totales:</td><td className="py-2 text-right">{totalStats.totalCarbs?.toFixed(2)} g</td></tr>
             <tr className="border-b"><td className="py-2 font-bold">Grasas totales:</td><td className="py-2 text-right">{totalStats.totalFat?.toFixed(2)} g</td></tr>
             <tr className="border-b-4"><td className="py-2 font-bold">Fibras totales:</td><td className="py-2 text-right">{totalStats.totalFiber?.toFixed(2)} g</td></tr>
-            <tr className="border-b"><td className="py-2 font-bold">Porcentaje grasa:</td><td className="py-2 text-right">{totalStats.fatPercentage?.toFixed(2)}%</td></tr>
-            <tr className="border-b"><td className="py-2 font-bold">Porcentaje hidratos de carbono:</td><td className="py-2 text-right">{totalStats.carbsPercentage?.toFixed(2)}%</td></tr>
-            <tr className="border-b"><td className="py-2 font-bold">Porcentaje proteina:</td><td className="py-2 text-right">{totalStats.proteinPercentage?.toFixed(2)}%</td></tr>
-            <tr className="border-b-4"><td className="py-2 font-bold">Porcentaje fibra:</td><td className="py-2 text-right">{totalStats.fiberPercentage?.toFixed(2)}%</td></tr>
             <tr className="border-b"><td className="py-2 font-bold">Coste por 100 g de proteina:</td><td className="py-2 text-right">{totalStats.costPer100gProtein?.toFixed(2)} €</td></tr>
             <tr className="border-b"><td className="py-2 font-bold">Coste por 100 g de hidratos de carbono:</td><td className="py-2 text-right">{totalStats.costPer100gCarb?.toFixed(2)} €</td></tr>
             <tr><td className="py-2 font-bold">Coste por 100 g de grasa:</td><td className="py-2 text-right">{totalStats.costPer100gFat?.toFixed(2)} €</td></tr>
