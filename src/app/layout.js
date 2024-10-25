@@ -14,7 +14,7 @@ const geistMono = localFont({
 
 export const metadata = {
   title: "MercaTicket",
-  description: "Statistics for your Mercadona tickets",
+  description: "Estadísticas para tus tickets de Mercadona. Obtén información nutricional de tus compras, optimiza lo que gastas en comer por cada día y encuentra los productos más caros que menos alimentan!",
 };
 
 export default function RootLayout({ children }) {
