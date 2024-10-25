@@ -1,7 +1,7 @@
 import React from 'react';
 
-const TicketLoading = ({ processingTicket }) => {
-  if (!processingTicket) return null;
+const TicketLoading = ({ processingTickets }) => {
+  if (!processingTickets) return null;
 
   return (
     <li className="flex items-center w-full justify-center mt-8">
