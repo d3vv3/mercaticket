@@ -29,10 +29,10 @@ const TicketItem = ({ item, index, switchUseForStats, setItemToReport, dailyKcal
             <div className="flex items-center justify-center col-span-2"><span className="font-bold">Grasas: </span> {item.product?.nutritional_information?.total_fat?.toFixed(2) ?? "N/A"}%</div>
           </div>
         </div>
-        <div className={`flex snap-start items-start justify-end col-start-1 text-gray-500 underline col-span-9 hover:cursor-pointer mb-2 ${item.product?.is_food ? "" : "grayscale" }`} onClick={() => setItemToReport(item)}>¿Incorrecto? Reportar</div>
         </React.Fragment>
       )
       }
+      <div className={`flex snap-start items-start justify-end col-start-1 text-gray-500 underline col-span-9 hover:cursor-pointer mb-2 ${item.product?.is_food ? "" : "grayscale" }`} onClick={() => setItemToReport(item)}>¿Incorrecto? Reportar</div>
     </React.Fragment>
   );
 }

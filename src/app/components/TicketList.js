@@ -25,7 +25,7 @@ const TicketList = ({ ticketStatistics, switchUseForStats, reportItemModal }) =>
         <div className="flex font-semibold justify-center col-span-2 sm:text-xl">Precio ud.</div>
         <div className="flex font-semibold justify-center col-span-1 sm:text-xl">Total</div>
       </div>
-      <div className={`grid grid-cols-9 sm:max-w-3xl w-full text-sm md:tx-base px-2 md:px-4 max-h-svh overflow-y-scroll snap-mandatory snap-y h-4/6 ${!detailedView ? "gap-y-2" : null}`}>
+      <div className="grid grid-cols-9 sm:max-w-3xl w-full text-sm md:tx-base px-2 md:px-4 max-h-svh overflow-y-scroll snap-mandatory snap-y h-4/6">
         {sortedItems.map((item, index) => (
           <TicketItem 
             key={index} 
