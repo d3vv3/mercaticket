@@ -1,33 +1,13 @@
 import React, { useState } from "react";
 import { TicketLoading } from "./";
 
-function mergeTicketItems(tickets) {
-  // Use an object to group items by product ID
-  const mergedItems = {};
-  
-  tickets.forEach(ticket => {
-    ticket.items.forEach(item => {
-      const id = item.product.id;
-      
-      if (mergedItems[id]) {
-        mergedItems[id].quantity += item.quantity;
-        mergedItems[id].total_price += item.total_price;
-      } else {
-        mergedItems[id] = { ...item };
-      }
-    });
-  });
-  
-  return Object.values(mergedItems);
-}
-
 const TicketForm = ({ onTicketProcessed }) => {
-  const [ticketFiles, setTicketFiles] = useState([]);
-  const [processingTickets, setProcessingTickets] = useState(false);
+  const [ticketFile, setTicketFile] = useState(new File([], "empty"));
+  const [processingTicket, setProcessingTicket] = useState(false);
 
   const processTickets = async () => {
     setProcessingTickets(true);
-    const responses = await Promise.all(
+    const responses = await Promise.allSettled(
       Array.from(ticketFiles).map(async (ticketFile) => {
         const formData = new FormData();
         formData.append("file", ticketFile);
@@ -41,7 +21,13 @@ const TicketForm = ({ onTicketProcessed }) => {
         return response.json();
       })
     );
-    onTicketProcessed({items: mergeTicketItems(responses)});
+    if (responses.some(response => response.status === "rejected")) alert("Hubo un error al procesar uno o más tickets");
+    onTicketProcessed({
+      items: mergeTicketItems(
+        responses
+          .filter(response => response.status === "fulfilled")
+          .map(response => response.value))
+    });
     setTicketFiles([]);
     setProcessingTickets(false);
   };
