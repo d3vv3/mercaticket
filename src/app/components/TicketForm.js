@@ -27,7 +27,7 @@ const TicketForm = ({ onTicketProcessed }) => {
 
   const processTickets = async () => {
     setProcessingTickets(true);
-    const responses = await Promise.all(
+    const responses = await Promise.allSettled(
       Array.from(ticketFiles).map(async (ticketFile) => {
         const formData = new FormData();
         formData.append("file", ticketFile);
@@ -41,7 +41,13 @@ const TicketForm = ({ onTicketProcessed }) => {
         return response.json();
       })
     );
-    onTicketProcessed({items: mergeTicketItems(responses)});
+    if (responses.some(response => response.status === "rejected")) alert("Hubo un error al procesar uno o más tickets");
+    onTicketProcessed({
+      items: mergeTicketItems(
+        responses
+          .filter(response => response.status === "fulfilled")
+          .map(response => response.value))
+    });
     setTicketFiles([]);
     setProcessingTickets(false);
   };
