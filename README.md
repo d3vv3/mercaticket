@@ -1,4 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Mercaticket
+
+Upload your Mercadona ticket and get insights about the nutritional value of your purchase.
+
+[Mercaapi](https://github.com/m0wer/mercaapi) parses the whole product catalog,
+uses Gemini Flash with the last image of each product to extract the nutritional information
+and serves it through an API. This project is a frontend for our API.
+
+![preview](assets/preview.jpg)
 
 ## Getting Started
 
